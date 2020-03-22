@@ -5,6 +5,7 @@ node_modules/
 dist/
 build/
 .firebase/
+src/javascripts/helpers/apiKeys.json
 
 # Logs
 logs

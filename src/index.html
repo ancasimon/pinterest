@@ -6,7 +6,24 @@
   <title>Pinterest</title>
 </head>
 <body>
-  <button type="button" class="btn btn-secondary"><i class="fas fa-mountain"></i></button>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Pinterest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <button id="navbar-logout-button" class="nav-item nav-link btn btn-secondary" href="#">Log Out</button>
+      </div>
+    </div>
+  </nav>
   
+  <div id="home" class="mt-5"></div>
+
+	<div id="boards" class="hide"></div>
+
+
 </body>
 </html>
