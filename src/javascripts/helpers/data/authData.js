@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import boardContainer from '../../components/boardContainer/boardContainer';
+
 const homeDiv = $('#home');
 const boardsDiv = $('#boards');
 const logoutButton = $('#navbar-logout-button');
@@ -12,6 +14,7 @@ const checkLoginStatus = () => {
       homeDiv.addClass('hide');
       boardsDiv.removeClass('hide');
       logoutButton.removeClass('hide');
+      boardContainer.buildBoards();
     } else {
       // person is not logged in
       homeDiv.removeClass('hide');
