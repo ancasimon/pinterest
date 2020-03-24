@@ -1,0 +1,42 @@
+{
+  "pin1": {
+    "name": "pin one",
+    "imageUrl": "",
+    "boardId": "board1"
+  },
+  "pin2": {
+    "name": "pin two",
+    "imageUrl": "",
+    "boardId": "board2"
+  },
+  "pin3": {
+    "name": "pin three",
+    "imageUrl": "",
+    "boardId": "board3"
+  },
+  "pin4": {
+    "name": "pin four",
+    "imageUrl": "",
+    "boardId": "board4"
+  },
+  "pin5": {
+    "name": "pin five",
+    "imageUrl": "",
+    "boardId": "board1"
+  },
+  "pin6": {
+    "name": "pin six",
+    "imageUrl": "",
+    "boardId": "board1"
+  },
+  "pin7": {
+    "name": "pin seven",
+    "imageUrl": "",
+    "boardId": "board1"
+  },
+  "pin8": {
+    "name": "pin eight",
+    "imageUrl": "",
+    "boardId": "board1"
+  }
+}
