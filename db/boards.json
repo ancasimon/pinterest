@@ -1,0 +1,27 @@
+{
+  "board1": {
+    "name": "Board One",
+    "description": "About Board One",
+    "topic": "Area1"
+  },
+  "board2": {
+    "name": "Board Two",
+    "description": "About Board Two",
+    "topic": "Area2"
+  },
+  "board3": {
+    "name": "Board Three",
+    "description": "About Board Three",
+    "topic": "Area3"
+  },
+  "board4": {
+    "name": "Board Four",
+    "description": "About Board Four",
+    "topic": "Area1"
+  },
+  "board5": {
+    "name": "Board Five",
+    "description": "About Board Five",
+    "topic": "Area1"
+  }
+}
