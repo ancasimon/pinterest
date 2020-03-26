@@ -20,18 +20,20 @@ const viewSingleBoard = (e) => {
       domString += '<button id="close-single-view" type="button" class="btn btn-dark"><i class="fas fa-window-close"></i></button>';
       domString += '</div>';
       domString += '<div class="container text-white">';
-      domString += '<div class="row">';
-      domString += '<div class="col-md-6">';
       domString += `<h2>Name: ${singleBoard.name}</h2>`;
       domString += `<p>Type: ${singleBoard.topic}</p>`;
       domString += `<p>${singleBoard.description}</p>`;
       domString += '<h3>Current pins:</h3>';
-      singleBoard.pins.forEach((pin) => {
-        domString += `<p>${pin.name}</p>`;
-        // domString += `<img>${pin.imageUrl}</img>`;
-      });
-      domString += '</div>';
-      domString += '</div>';
+      console.error(singleBoard.pins);
+      if (singleBoard.pins) {
+        singleBoard.pins.forEach((item) => {
+          console.error('specific pin in array', item);
+          domString += `<p>${item.name}</p>`;
+          domString += `<img src="${item.imageUrl}" alt="${item.name}"></img>`;
+        });
+      } else {
+        domString += '<p>No current pins here!</p>';
+      }
       domString += '</div>';
       utils.printToDom('single-view', domString);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
