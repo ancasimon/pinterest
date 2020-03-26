@@ -5,7 +5,7 @@
     "boardId": "board1"
   },
   "pin2": {
-    "name": "Tuna Plate",
+    "name": "Seared Tuna Plate",
     "imageUrl": "src/images/asheville_tuna_plate.jpeg",
     "boardId": "board1"
   },
@@ -30,17 +30,17 @@
     "boardId": "board2"
   },
   "pin7": {
-    "name": "Gazpacho",
+    "name": "When one straw isn’t enough: Gazpacho!",
     "imageUrl": "src/images/france_gazpacho.jpeg",
     "boardId": "board2"
   },
   "pin8": {
-    "name": "Nutella",
+    "name": "Nutella- you can never have too much ...",
     "imageUrl": "src/images/france_nutella.jpeg",
     "boardId": "board2"
   }, 
   "pin9": {
-    "name": "Pork with Rosemary",
+    "name": "Pork with fresh rosemary",
     "imageUrl": "src/images/france_pork.jpeg",
     "boardId": "board2"
   },
@@ -50,7 +50,7 @@
     "boardId": "board2"
   },
   "pin11": {
-    "name": "Grilled Shrimp",
+    "name": "Shrimp on the Grill",
     "imageUrl": "src/images/france_shrimp_grilled.jpeg",
     "boardId": "board2"
   },
@@ -60,27 +60,27 @@
     "boardId": "board2"
   },
   "pin13": {
-    "name": "Chciken Soup",
+    "name": "There's a reason all those self-help books stole its name!",
     "imageUrl": "src/images/home_chicken_soup.jpeg",
     "boardId": "board3"
   },
   "pin14": {
-    "name": "Chickens",
+    "name": "Get some!",
     "imageUrl": "src/images/home_chickens.jpeg",
     "boardId": "board3"
   },
   "pin15": {
-    "name": "Eggs",
+    "name": "Nothing like a fresh-laid egg",
     "imageUrl": "src/images/home_egg.jpeg",
     "boardId": "board3"
   },
   "pin16": {
-    "name": "Garden",
+    "name": "Grow some",
     "imageUrl": "src/images/home_garden.jpeg",
     "boardId": "board3"
   }, 
   "pin17": {
-    "name": "Pizza",
+    "name": "Take pizza to a whole new level",
     "imageUrl": "src/images/home_pizza.jpeg",
     "boardId": "board3"
   },
@@ -95,12 +95,12 @@
     "boardId": "board4"
   },
   "pin20": {
-    "name": "Fish",
+    "name": "In Galilee, you do like Jesus (and maybe add a few sides)",
     "imageUrl": "src/images/israel_jesus_fish.jpeg",
     "boardId": "board4"
   },
   "pin21": {
-    "name": "Lebanese",
+    "name": "Al Wady Lebanese Restaurant = Happiness",
     "imageUrl": "src/images/israel_lebanese.jpeg",
     "boardId": "board4"
   },
@@ -110,7 +110,7 @@
     "boardId": "board4"
   },
   "pin23": {
-    "name": "Schwarma bar",
+    "name": "How excited would you be to make your own schwarma wrap in Jerusalem?",
     "imageUrl": "src/images/israel_schwarma.jpeg",
     "boardId": "board4"
   },
@@ -145,7 +145,7 @@
     "boardId": "board6"
   },
   "pin30": {
-    "name": "Romanian Desserts",
+    "name": "Desserts",
     "imageUrl": "src/images/romania_desserts.jpeg",
     "boardId": "board6"
   },
@@ -155,12 +155,12 @@
     "boardId": "board6"
   },
   "pin32": {
-    "name": "Pickles",
+    "name": "Pickled anything!",
     "imageUrl": "src/images/romania_pickles.jpeg",
     "boardId": "board6"
   },
   "pin33": {
-    "name": "Pie",
+    "name": "Cheese Pie",
     "imageUrl": "src/images/romania_pie.jpeg",
     "boardId": "board6"
   },
@@ -170,7 +170,7 @@
     "boardId": "board6"
   },
   "pin35": {
-    "name": "Cherries",
+    "name": "Cherries, of course",
     "imageUrl": "src/images/seattle_cherries.jpeg",
     "boardId": "board7"
   },
@@ -180,7 +180,7 @@
     "boardId": "board7"
   },
   "pin37": {
-    "name": "Market",
+    "name": "Anything you find here!",
     "imageUrl": "src/images/seattle_market.jpeg",
     "boardId": "board7"
   },
@@ -190,7 +190,7 @@
     "boardId": "board7"
   },
   "pin39": {
-    "name": "Fish",
+    "name": "Really fresh fish",
     "imageUrl": "src/images/spain_fish_caught.jpeg",
     "boardId": "board8"
   },
@@ -200,7 +200,7 @@
     "boardId": "board8"
   },
   "pin41": {
-    "name": "Salmon",
+    "name": "Salmon with mojo",
     "imageUrl": "src/images/spain_salmon_mojo.jpeg",
     "boardId": "board8"
   }
