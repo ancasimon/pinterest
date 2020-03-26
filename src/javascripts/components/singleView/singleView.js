@@ -21,7 +21,6 @@ const viewSingleBoard = (e) => {
       domString += '</div>';
       domString += '<div class="container text-white">';
       domString += `<h2>Name: ${singleBoard.name}</h2>`;
-      domString += `<p>Type: ${singleBoard.topic}</p>`;
       domString += `<p>${singleBoard.description}</p>`;
       domString += '<h3>Current pins:</h3>';
       console.error(singleBoard.pins);
