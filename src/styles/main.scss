@@ -14,10 +14,14 @@ body {
 // }
 
 .board-image {
-  border: grey 0.5em solid;
+  border: grey 0.25em solid;
   border-radius: 2em;
 }
 
 .pin-image {
   width: 100%;
+}
+
+.delete-board-button {
+  color: darkred;
 }

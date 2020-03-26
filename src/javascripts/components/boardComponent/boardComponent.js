@@ -6,6 +6,7 @@ const boardBuilder = (board) => {
   domString += '<div class="card-body">';
   domString += '<div>';
   domString += `<img class="board-image img-fluid" src="${board.imageUrl}" alt="${board.alt}"></img>`;
+  domString += '<button type="button" class="btn btn-outline-secondary mt-4 delete-board-button"><i class="fas fa-trash-alt"></i></button>';
   domString += '</div>';
   domString += '</div>';
   domString += '</div>';
