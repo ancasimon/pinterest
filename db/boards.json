@@ -1,27 +1,34 @@
 {
   "board1": {
-    "name": "Board One",
-    "description": "About Board One",
-    "topic": "Area1"
+    "name": "What to Eat in Asheville, NC",
+    "description": "About Board One"
   },
   "board2": {
-    "name": "Board Two",
-    "description": "About Board Two",
-    "topic": "Area2"
+    "name": "What to Eat in Southern France",
+    "description": "About Board Two"
   },
   "board3": {
-    "name": "Board Three",
-    "description": "About Board Three",
-    "topic": "Area3"
+    "name": "What to Eat at Home",
+    "description": "About Board Three"
   },
   "board4": {
-    "name": "Board Four",
-    "description": "About Board Four",
-    "topic": "Area1"
+    "name": "What to Eat in Israel",
+    "description": "About Board Four"
   },
   "board5": {
-    "name": "Board Five",
-    "description": "About Board Five",
-    "topic": "Area1"
+    "name": "What to Eat in Maine",
+    "description": "About Board Five"
+  },
+  "board6": {
+    "name": "What to Eat in Romania",
+    "description": "About Board Five"
+  },
+  "board7": {
+    "name": "What to Eat in Seattle, WA",
+    "description": "About Board Five"
+  },
+  "board8": {
+    "name": "What to Eat in the Canary Islands, Spain",
+    "description": "About Board Five"
   }
 }
