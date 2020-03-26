@@ -28,4 +28,14 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getSingleBoardWithPins };
+const completelyRemovePin = (pinId) => new Promise((resolve, reject) => {
+  pinData.deletePin(pinId)
+    .then(() => {
+      pinData.deletePin(pinId);
+      console.error('completelyRemovePin function running', pinId);
+      resolve();
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getSingleBoardWithPins, completelyRemovePin };

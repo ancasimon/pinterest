@@ -9,14 +9,18 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
       const allThePins = response.data;
       console.error('getPinsByBoardId', allThePins);
       const pins = [];
-      Object.keys(allThePins).forEach((pinId) => {
-        allThePins[pinId].id = pinId;
-        pins.push(allThePins[pinId]);
-      });
+      if (allThePins) {
+        Object.keys(allThePins).forEach((pinId) => {
+          allThePins[pinId].id = pinId;
+          pins.push(allThePins[pinId]);
+        });
+      }
       console.error('here are all the pins for this board', pins);
       resolve(pins);
     })
     .catch((err) => reject(err));
 });
 
-export default { getPinsByBoardId };
+const deletePin = (pinId) => axios.delete(`${baseUrl}/pins/${pinId}.json`);
+
+export default { getPinsByBoardId, deletePin };

@@ -8,7 +8,7 @@ const buildBoards = () => {
   boardData.getBoards()
     .then((boards) => {
       let domString = '';
-      domString += '<h2 class="text-center">Famous Boards</h2>';
+      domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
       domString += '<div class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += boardComponent.boardBuilder(board);
