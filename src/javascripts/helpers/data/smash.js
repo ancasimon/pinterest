@@ -31,11 +31,24 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
 const completelyRemovePin = (pinId) => new Promise((resolve, reject) => {
   pinData.deletePin(pinId)
     .then(() => {
-      pinData.deletePin(pinId);
       console.error('completelyRemovePin function running', pinId);
       resolve();
     })
     .catch((err) => reject(err));
 });
 
-export default { getSingleBoardWithPins, completelyRemovePin };
+const completelyRemoveBoard = (boardId) => new Promise((resolve, reject) => {
+  boardData.deleteBoard(boardId)
+    .then(() => {
+      pinData.getPinsByBoardId(boardId).then((pins) => {
+        pins.forEach((eachPin) => {
+          pinData.deletePin(eachPin.id);
+        });
+        resolve();
+        console.error('completelyRemoveBoard function running');
+      });
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getSingleBoardWithPins, completelyRemovePin, completelyRemoveBoard };

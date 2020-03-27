@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 // import smash from '../../helpers/data/smash';
 // import pinData from '../../helpers/data/pinData';
 import smash from '../../helpers/data/smash';
+import pinData from '../../helpers/data/pinData';
 // import pinData from '../../helpers/data/pinData';
 
 
@@ -13,7 +14,8 @@ const closeSingleViewEvent = () => {
 const removePin = (e) => {
   const pinId = e.target.closest('.card').id;
   console.error('pin id of pin to be deleted', pinId);
-  smash.completelyRemovePin(pinId)
+  // smash.completelyRemovePin(pinId)
+  pinData.deletePin(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       viewSingleBoard();
@@ -47,8 +49,8 @@ const viewSingleBoard = (e) => {
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
-          domString += '<button class="btn btn-secondary mt-2 delete-pin-button"><i class="fas fa-trash-alt"></i></button>';
           domString += '</div>';
+          domString += '<button class="btn btn-secondary delete-pin-button"><i class="fas fa-trash-alt"></i></button>';
           domString += '</div>';
           domString += '</div>';
         });
@@ -60,6 +62,7 @@ const viewSingleBoard = (e) => {
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
+      // $('body').on('click', '.close-single-view', closeSingleViewEvent);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#boards').addClass('hide');
     })
