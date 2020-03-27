@@ -1,14 +1,12 @@
 import utils from '../../helpers/utils';
-// import smash from '../../helpers/data/smash';
-// import pinData from '../../helpers/data/pinData';
 import smash from '../../helpers/data/smash';
 import pinData from '../../helpers/data/pinData';
-// import pinData from '../../helpers/data/pinData';
 
 
 const closeSingleViewEvent = () => {
   utils.printToDom('single-view', '');
   $('#boards').removeClass('hide');
+  $('#single-view').addClass('hide');
 };
 
 const removePin = (e) => {
@@ -19,8 +17,7 @@ const removePin = (e) => {
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       viewSingleBoard();
-      // eslint-disable-next-line no-use-before-define
-      console.error('viewSingleBoard ran after delete', viewSingleBoard);
+      console.error('viewSingleBoard ran after delete');
     })
     .catch((err) => console.error('could not delete pin', err));
 };
