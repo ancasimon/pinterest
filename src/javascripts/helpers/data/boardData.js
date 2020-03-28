@@ -11,10 +11,12 @@ const getBoards = () => new Promise((resolve, reject) => {
     .then((response) => {
       const demBoards = response.data;
       const boards = [];
-      Object.keys(demBoards).forEach((boardId) => {
-        demBoards[boardId].id = boardId;
-        boards.push(demBoards[boardId]);
-      });
+      if (demBoards) {
+        Object.keys(demBoards).forEach((boardId) => {
+          demBoards[boardId].id = boardId;
+          boards.push(demBoards[boardId]);
+        });
+      }
       resolve(boards);
     })
     .catch((err) => reject(err));
@@ -22,4 +24,6 @@ const getBoards = () => new Promise((resolve, reject) => {
 
 const getBoardById = (boardId) => axios.get(`${baseUrl}/boards/${boardId}.json`);
 
-export default { getBoards, getBoardById };
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
+
+export default { getBoards, getBoardById, deleteBoard };

@@ -9,6 +9,23 @@ body {
 	display: none;
 }
 
-img {
-  height: 300px;
+.remove-from-dom {
+  position: absolute;  left: -999999px;
+}
+
+// img {
+//   height: 300px;
+// }
+
+.board-image {
+  border: grey 0.25em solid;
+  border-radius: 2em;
+}
+
+.pin-image {
+  width: 100%;
+}
+
+.delete-board-button {
+  color: darkred;
 }
