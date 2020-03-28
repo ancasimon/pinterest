@@ -7,7 +7,6 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/pins.json?orderBy="boardId"&equalTo="${boardId}"`)
     .then((response) => {
       const allThePins = response.data;
-      console.error('getPinsByBoardId', allThePins);
       const pins = [];
       if (allThePins) {
         Object.keys(allThePins).forEach((pinId) => {
@@ -15,7 +14,6 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
           pins.push(allThePins[pinId]);
         });
       }
-      console.error('here are all the pins for this board', pins);
       resolve(pins);
     })
     .catch((err) => reject(err));

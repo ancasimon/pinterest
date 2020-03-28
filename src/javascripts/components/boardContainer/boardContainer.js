@@ -9,7 +9,6 @@ const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
   smash.completelyRemoveBoard(boardId)
     .then(() => {
-      utils.printToDom('single-view', '');
       // eslint-disable-next-line no-use-before-define
       buildBoards();
     })
@@ -27,7 +26,7 @@ const buildBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
-      $('body').on('click', '.board-card', singleView.viewSingleBoard);
+      $('body').on('click', '.board-card', singleView.viewSingleBoardEvent);
       $('body').on('click', '.delete-board-button', removeBoard);
     })
     .catch((err) => console.error('getBoards broke', err));

@@ -10,20 +10,16 @@ const closeSingleViewEvent = () => {
 };
 
 const removePin = (e) => {
-  const pinId = e.target.closest('.card').id;
+  const pinId = e.target.closest('.pin-card').id;
   console.error('pin id of pin to be deleted', pinId);
-  // smash.completelyRemovePin(pinId)
   pinData.deletePin(pinId)
     .then(() => {
-      // eslint-disable-next-line no-use-before-define
-      viewSingleBoard();
-      console.error('viewSingleBoard ran after delete');
+      $(e.target.closest('.pin-card')).addClass('hide, remove-from-dom');
     })
     .catch((err) => console.error('could not delete pin', err));
 };
 
-const viewSingleBoard = (e) => {
-  const boardId = e.target.closest('.card').id;
+const viewSingleBoard = (boardId) => {
   console.error('single board id', boardId);
   smash.getSingleBoardWithPins(boardId)
     .then((singleBoard) => {
@@ -38,11 +34,10 @@ const viewSingleBoard = (e) => {
       domString += '<div class="container d-flex flex-wrap">';
       domString += '<div class="row row-cols-1 row-cols-md-3">';
       console.error(singleBoard.pins);
-      if (singleBoard.pins) {
+      if (singleBoard.pins.length) {
         singleBoard.pins.forEach((item) => {
-          console.error('specific pin in array', item);
           domString += '<div class="col mb-3">';
-          domString += `<div class="card bg-light mb-3 h-100" id="${item.id}">`;
+          domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}">`;
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
@@ -59,11 +54,18 @@ const viewSingleBoard = (e) => {
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
-      // $('body').on('click', '.close-single-view', closeSingleViewEvent);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#boards').addClass('hide');
     })
     .catch((err) => console.error('problem with single board', err));
 };
 
-export default { viewSingleBoard };
+const viewSingleBoardEvent = (e) => {
+  if ($(e.target).hasClass('delete-board-button')) {
+    return;
+  }
+  const boardId = e.target.closest('.card').id;
+  viewSingleBoard(boardId);
+};
+
+export default { viewSingleBoard, viewSingleBoardEvent };

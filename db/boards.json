@@ -7,45 +7,51 @@
   },
   "board2": {
     "name": "What to Eat in Maine",
-    "description": "About Board Five",
+    "description": "About Board 2",
     "imageUrl": "/src/images/me.png",
     "alt": "Map of the state of ME"
   },
   "board3": {
     "name": "What to Eat in Seattle, WA",
-    "description": "About Board Five",
+    "description": "About Board 3",
     "imageUrl": "/src/images/seattle.png",
     "alt": "Map of Seattle, WA"
   },
   "board4": {
     "name": "What to Eat at Home",
-    "description": "About Board Three",
+    "description": "About Board 4",
     "imageUrl": "/src/images/tn.png",
     "alt": "Map of the state of TN"
   },
   "board5": {
     "name": "What to Eat in Southern France",
-    "description": "About Board Two",
+    "description": "About Board 5",
     "imageUrl": "/src/images/france.png",
     "alt": "Map of southern region of France"
   },
   
   "board6": {
     "name": "What to Eat in Israel",
-    "description": "About Board Four",
+    "description": "About Board 6",
     "imageUrl": "/src/images/israel.png",
     "alt": "Map of Israel"
   },
   "board7": {
     "name": "What to Eat in the Canary Islands, Spain",
-    "description": "About Board Five",
+    "description": "About Board 7",
     "imageUrl": "/src/images/canary.png",
     "alt": "Map of the Canary Islands, Spain"
   },
   "board8": {
     "name": "What to Eat in Romania",
-    "description": "About Board Five",
+    "description": "About Board 8",
     "imageUrl": "/src/images/romania.png",
     "alt": "Map of Romania"
+  },
+  "board9": {
+    "name": "Where to Next?",
+    "description": "About Board 9",
+    "imageUrl": "/src/images/world.png",
+    "alt": "World map"
   }
 }

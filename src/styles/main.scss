@@ -9,6 +9,10 @@ body {
 	display: none;
 }
 
+.remove-from-dom {
+  position: absolute;  left: -999999px;
+}
+
 // img {
 //   height: 300px;
 // }
