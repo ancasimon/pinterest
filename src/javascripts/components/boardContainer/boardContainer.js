@@ -1,4 +1,6 @@
-import boardData from '../../helpers/data/boardData';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+// import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
 import boardComponent from '../boardComponent/boardComponent';
 // eslint-disable-next-line import/no-cycle
@@ -15,8 +17,16 @@ const removeBoard = (e) => {
     .catch((err) => console.error('cannot delete board', err));
 };
 
+// const getCurrentUid = () => {
+//   const myUid = firebase.auth().currentUser.uid;
+//   console.error(myUid);
+//   boardData.getBoardsByUid(myUid).then().catch();
+// };
+
 const buildBoards = () => {
-  boardData.getBoards()
+  const myUid = firebase.auth().currentUser.uid;
+  console.error('uid of user logged in and ready to trigger buildBoards', myUid);
+  smash.getSingleUserWithBoards(myUid)
     .then((boards) => {
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
@@ -29,7 +39,7 @@ const buildBoards = () => {
       $('body').on('click', '.board-card', singleView.viewSingleBoardEvent);
       $('body').on('click', '.delete-board-button', removeBoard);
     })
-    .catch((err) => console.error('getBoards broke', err));
+    .catch((err) => console.error('getBoardsByUid broke', err));
 };
 
 export default { buildBoards };

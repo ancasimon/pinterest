@@ -3,55 +3,71 @@
     "name": "What to Eat in Asheville, NC",
     "description": "About Board One",
     "imageUrl": "/src/images/asheville.png",
-    "alt": "Map of Asheville, NC"
+    "alt": "Map of Asheville, NC",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board2": {
     "name": "What to Eat in Maine",
     "description": "About Board 2",
     "imageUrl": "/src/images/me.png",
-    "alt": "Map of the state of ME"
+    "alt": "Map of the state of ME",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board3": {
     "name": "What to Eat in Seattle, WA",
     "description": "About Board 3",
     "imageUrl": "/src/images/seattle.png",
-    "alt": "Map of Seattle, WA"
+    "alt": "Map of Seattle, WA",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board4": {
     "name": "What to Eat at Home",
     "description": "About Board 4",
     "imageUrl": "/src/images/tn.png",
-    "alt": "Map of the state of TN"
+    "alt": "Map of the state of TN",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board5": {
     "name": "What to Eat in Southern France",
     "description": "About Board 5",
     "imageUrl": "/src/images/france.png",
-    "alt": "Map of southern region of France"
+    "alt": "Map of southern region of France",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   
   "board6": {
     "name": "What to Eat in Israel",
     "description": "About Board 6",
     "imageUrl": "/src/images/israel.png",
-    "alt": "Map of Israel"
+    "alt": "Map of Israel",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board7": {
     "name": "What to Eat in the Canary Islands, Spain",
     "description": "About Board 7",
     "imageUrl": "/src/images/canary.png",
-    "alt": "Map of the Canary Islands, Spain"
+    "alt": "Map of the Canary Islands, Spain",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board8": {
     "name": "What to Eat in Romania",
     "description": "About Board 8",
     "imageUrl": "/src/images/romania.png",
-    "alt": "Map of Romania"
+    "alt": "Map of Romania",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
   },
   "board9": {
-    "name": "Where to Next?",
+    "name": "Where to Next? (No pins!)",
     "description": "About Board 9",
+    "imageUrl": "/src/images/world_question_mark.png",
+    "alt": "World map",
+    "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
+  },
+  "board10": {
+    "name": "Where User #2 has been!",
+    "description": "About Board 10",
     "imageUrl": "/src/images/world.png",
-    "alt": "World map"
+    "alt": "World map",
+    "uid": "12345"
   }
 }
