@@ -6,6 +6,7 @@ import boardComponent from '../boardComponent/boardComponent';
 // eslint-disable-next-line import/no-cycle
 import singleView from '../singleView/singleView';
 import smash from '../../helpers/data/smash';
+import boardData from '../../helpers/data/boardData';
 
 const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -26,7 +27,9 @@ const removeBoard = (e) => {
 const buildBoards = () => {
   const myUid = firebase.auth().currentUser.uid;
   console.error('uid of user logged in and ready to trigger buildBoards', myUid);
-  smash.getSingleUserWithBoards(myUid)
+  const issue = boardData.getBoardsByUid(myUid);
+  // smash.getSingleUserWithBoards(myUid)
+  console.error('boards of user logged in', issue)
     .then((boards) => {
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';

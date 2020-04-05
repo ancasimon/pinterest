@@ -38,7 +38,12 @@ const getSingleUserWithBoards = (userId) => new Promise((resolve, reject) => {
   userData.getUserById(userId)
     .then((response) => {
       const user = response.data;
-      resolve(user);
+      user.uid = userId;
+      user.boards = [];
+      boardData.getBoardsByUid(user.id).then((boards) => {
+        console.log('the boards of this user', boards);
+        resolve(user);
+      });
     })
     .catch((err) => reject(err));
 });
