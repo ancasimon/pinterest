@@ -27,9 +27,9 @@ const removeBoard = (e) => {
 const buildBoards = () => {
   const myUid = firebase.auth().currentUser.uid;
   console.error('uid of user logged in and ready to trigger buildBoards', myUid);
-  const issue = boardData.getBoardsByUid(myUid);
+  boardData.getBoardsByUid(myUid);
   // smash.getSingleUserWithBoards(myUid)
-  console.error('boards of user logged in', issue)
+  console.error('boards of user logged in', boardData.getBoardsByUid(myUid))
     .then((boards) => {
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
