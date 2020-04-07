@@ -11,7 +11,6 @@ const closeSingleViewEvent = () => {
 
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-card').id;
-  console.error('pin id of pin to be deleted', pinId);
   pinData.deletePin(pinId)
     .then(() => {
       $(e.target.closest('.pin-card')).addClass('hide, remove-from-dom');
@@ -20,10 +19,8 @@ const removePin = (e) => {
 };
 
 const viewSingleBoard = (boardId) => {
-  console.error('single board id', boardId);
   smash.getSingleBoardWithPins(boardId)
     .then((singleBoard) => {
-      console.error('single board in then', singleBoard);
       let domString = '';
       domString += '<div class="container d-inline-block text-right mt-5">';
       domString += '<button id="close-single-view" type="button" class="btn btn-dark"><i class="fas fa-window-close"></i></button>';
@@ -33,7 +30,6 @@ const viewSingleBoard = (boardId) => {
       domString += '<h3>Current pins:</h3>';
       domString += '<div class="container d-flex flex-wrap">';
       domString += '<div class="row row-cols-1 row-cols-md-3">';
-      console.error(singleBoard.pins);
       if (singleBoard.pins.length) {
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
