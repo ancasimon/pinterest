@@ -1,24 +1,26 @@
 # Foodies Unite 
 
 ## Description
-This project is an exploration into using Firebase databases for user authentication and data management. It is a site similar to a much simplified vesion of Pinterest, and it includes meal recommendations for various places around the US and the world. Instructions can be found [here](https://github.com/nss-nightclass-projects/exercise-vault/blob/master/FIREBASE_pinterest.md).
+This project is an exploration into using a Firebase database for user authentication and data management. It is a site similar to a much simplified vesion of Pinterest, and it includes meal recommendations for various places around the US and the world. Instructions can be found [here](https://github.com/nss-nightclass-projects/exercise-vault/blob/master/FIREBASE_pinterest.md).
 
 ## Screenshots
 ##### Home Login Page
-![Login Page](src/images/login.png)
+[Login Page](src/images/login.png)
 
 ##### Boards Page
-![Home Page](src/images/home.png)
+[Home Page](src/images/home.png)
 
 ###### Single Board View Page (with Pins)
-![Single View](src/images/single_view_seattle.png)
+[Single View](src/images/single_view_seattle.png)
 
 
 ## Features
+1. Users are authenticated via Google login. 
 1. Users can have view multiple boards. 
-1. Users can access an individual view for a single board, which displays all the pins associated with that board. 
+1. Users can view only their boards; they cannot view other users' boards.
+1. Users can access an individual view for each board, which displays all the pins associated with that board. 
 1. Users can delete boards, which also deletes all the pins associated with the corrsponding board. 
-1. Users can delete pins. 
+1. Users can delete individual pins. 
 
 ## How to Run
 1. Clone down this repo.

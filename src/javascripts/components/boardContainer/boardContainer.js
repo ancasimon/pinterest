@@ -1,9 +1,12 @@
-import boardData from '../../helpers/data/boardData';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+// import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
 import boardComponent from '../boardComponent/boardComponent';
 // eslint-disable-next-line import/no-cycle
 import singleView from '../singleView/singleView';
 import smash from '../../helpers/data/smash';
+import boardData from '../../helpers/data/boardData';
 
 const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -15,9 +18,20 @@ const removeBoard = (e) => {
     .catch((err) => console.error('cannot delete board', err));
 };
 
+// const getCurrentUid = () => {
+//   const myUid = firebase.auth().currentUser.uid;
+//   console.error(myUid);
+//   boardData.getBoardsByUid(myUid).then().catch();
+// };
+
 const buildBoards = () => {
-  boardData.getBoards()
+  console.log('current user in FB', firebase.auth().currentUser.uid);
+  const myUid = firebase.auth().currentUser.uid;
+  console.error('uid of user logged in and ready to trigger buildBoards', myUid);
+  boardData.getBoardsByUid(myUid)
+  // smash.getSingleUserWithBoards(myUid)
     .then((boards) => {
+      console.error('boards of user logged in', boards);
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
       domString += '<div class="d-flex flex-wrap">';
@@ -29,7 +43,7 @@ const buildBoards = () => {
       $('body').on('click', '.board-card', singleView.viewSingleBoardEvent);
       $('body').on('click', '.delete-board-button', removeBoard);
     })
-    .catch((err) => console.error('getBoards broke', err));
+    .catch((err) => console.error('getBoardsByUid broke', err));
 };
 
 export default { buildBoards };

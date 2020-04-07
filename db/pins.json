@@ -203,5 +203,15 @@
     "name": "Salmón con salsa de mojo",
     "imageUrl": "src/images/spain_salmon_mojo.jpeg",
     "boardId": "board7"
+  },
+  "pin42": {
+    "name": "Grapes",
+    "imageUrl": "src/images/grapes.jpeg",
+    "boardId": "board10"
+  },
+  "pin43": {
+    "name": "More tuna",
+    "imageUrl": "src/images/more-tuna.jpeg",
+    "boardId": "board10"
   }
 }
