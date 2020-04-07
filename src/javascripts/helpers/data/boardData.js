@@ -4,9 +4,9 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`);
-  console.error('this is the uid for the getBoardsByUid function in boardData file', uid)
+  axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
+      console.error('this is the uid for the getBoardsByUid function in boardData file', uid);
       const demBoards = response.data;
       const boards = [];
       console.error('response data coming from axios call', demBoards);

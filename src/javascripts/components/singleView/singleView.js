@@ -56,6 +56,7 @@ const viewSingleBoard = (boardId) => {
       $('body').on('click', '.delete-pin-button', removePin);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#boards').addClass('hide');
+      $('#single-view').removeClass('hide');
     })
     .catch((err) => console.error('problem with single board', err));
 };
