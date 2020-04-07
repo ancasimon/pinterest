@@ -5,13 +5,13 @@ This project is an exploration into using a Firebase database for user authentic
 
 ## Screenshots
 ##### Home Login Page
-[Login Page](src/images/login.png)
+![Login Page](src/images/login.png)
 
 ##### Boards Page
-[Home Page](src/images/home.png)
+![Home Page](src/images/home.png)
 
 ###### Single Board View Page (with Pins)
-[Single View](src/images/single_view_seattle.png)
+![Single View](src/images/single_view_seattle.png)
 
 
 ## Features
