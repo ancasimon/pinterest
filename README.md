@@ -1,4 +1,4 @@
-# Foodies Unite 
+# A Foodie's Connection
 
 ## Description
 This project is an exploration into using a Firebase database for user authentication and data management. It is a site similar to a much simplified vesion of Pinterest, and it includes meal recommendations for various places around the US and the world. Instructions can be found [here](https://github.com/nss-nightclass-projects/exercise-vault/blob/master/FIREBASE_pinterest.md).
@@ -27,3 +27,8 @@ This project is an exploration into using a Firebase database for user authentic
 1. Make sure you have http-server installed via npm. If not, get it [here](https://www.npmjs.com/package/http-server).
 1. On your command line, run `hs -p 9999`.
 1. In your browser, navigate to `http://localhost:9999`.
+
+## Firebase Deployment
+This project has been deployed with Firebase. 
+You can access it [here](https://pinterest-4b62d.web.app/). 
+Create a Firebase account and run the script. 
