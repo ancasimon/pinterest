@@ -1,6 +1,5 @@
 {
   "boards": "fancy",
   "pins": "interesting",
-  "users": "me",
-  "auth": "myUid"
+  "users": "me"
 }

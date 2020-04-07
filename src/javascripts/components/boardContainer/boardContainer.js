@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
 import boardComponent from '../boardComponent/boardComponent';
 // eslint-disable-next-line import/no-cycle
@@ -18,6 +17,7 @@ const removeBoard = (e) => {
     .catch((err) => console.error('cannot delete board', err));
 };
 
+// This is the code that gets me authorization by user and that I added inside the function below:
 // const getCurrentUid = () => {
 //   const myUid = firebase.auth().currentUser.uid;
 //   console.error(myUid);
@@ -25,13 +25,9 @@ const removeBoard = (e) => {
 // };
 
 const buildBoards = () => {
-  console.log('current user in FB', firebase.auth().currentUser.uid);
   const myUid = firebase.auth().currentUser.uid;
-  console.error('uid of user logged in and ready to trigger buildBoards', myUid);
   boardData.getBoardsByUid(myUid)
-  // smash.getSingleUserWithBoards(myUid)
     .then((boards) => {
-      console.error('boards of user logged in', boards);
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
       domString += '<div class="d-flex flex-wrap">';

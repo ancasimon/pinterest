@@ -1,6 +1,5 @@
 import boardData from './boardData';
 import pinData from './pinData';
-import userData from './userData';
 
 const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
   boardData.getBoardById(boardId)
@@ -9,7 +8,6 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
       board.id = boardId;
       board.pins = [];
       pinData.getPinsByBoardId(board.id).then((pins) => {
-        console.error('here are the pins for this board', pins);
         if (pins) {
           pins.forEach((pin) => {
             board.pins.push(pin);
@@ -34,18 +32,4 @@ const completelyRemoveBoard = (boardId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const getSingleUserWithBoards = (userId) => new Promise((resolve, reject) => {
-  userData.getUserById(userId)
-    .then((response) => {
-      const user = response.data;
-      user.uid = userId;
-      user.boards = [];
-      boardData.getBoardsByUid(user.id).then((boards) => {
-        console.log('the boards of this user', boards);
-        resolve(user);
-      });
-    })
-    .catch((err) => reject(err));
-});
-
-export default { getSingleBoardWithPins, getSingleUserWithBoards, completelyRemoveBoard };
+export default { getSingleBoardWithPins, completelyRemoveBoard };
