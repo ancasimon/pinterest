@@ -6,6 +6,7 @@ import boardComponent from '../boardComponent/boardComponent';
 import singleView from '../singleView/singleView';
 import smash from '../../helpers/data/smash';
 import boardData from '../../helpers/data/boardData';
+import newBoardForm from '../newBoardForm/newBoardForm';
 
 const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -30,6 +31,20 @@ const buildBoards = () => {
     .then((boards) => {
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
+      domString += '<div class="col-10 offset-1">';
+      domString += '<div class="accordion" id="accordionExample">';
+      domString += '<div class="card alert alert-secondary"">';
+      domString += '<div class="card-header" id="headingTwo">';
+      domString += '<h2 class="mb-0">';
+      domString += '<button class="btn btn-outline-secondary alert-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Click Here to Add a New Board</button>';
+      domString += '</h2>';
+      domString += '</div>';
+      domString += '<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">';
+      domString += newBoardForm.buildBoardForm();
+      domString += '</div>';
+      domString += '</div>';
+      domString += '</div>';
+      domString += '</div>';
       domString += '<div class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += boardComponent.boardBuilder(board);
