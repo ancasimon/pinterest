@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
 import smash from '../../helpers/data/smash';
 import pinData from '../../helpers/data/pinData';
+import newPinForm from '../newPinForm/newPinForm';
 
 
 const closeSingleViewEvent = () => {
@@ -26,7 +27,23 @@ const viewSingleBoard = (boardId) => {
       domString += '<button id="close-single-view" type="button" class="btn btn-dark"><i class="fas fa-window-close"></i></button>';
       domString += '</div>';
       domString += '<div class="container">';
-      domString += `<h2 class="text-white mb-5">${singleBoard.name}</h2>`;
+      domString += `<h2 class="text-white mb-3">${singleBoard.name}</h2>`;
+
+      domString += '<div class="col-10 offset-1 text-center">';
+      domString += '<div class="accordion" id="accordionPinForm">';
+      domString += '<div class="card alert alert-secondary"">';
+      domString += '<div class="card-header" id="headingPinForm">';
+      domString += '<h2 class="mb-0">';
+      domString += `<button class="btn btn-outline-secondary alert-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePinForm" aria-expanded="false" aria-controls="collapsePinForm">Click Here to Add a New Pin for ${singleBoard.location}</button>`;
+      domString += '</h2>';
+      domString += '</div>';
+      domString += '<div id="collapsePinForm" class="collapse" aria-labelledby="headingPinForm" data-parent="#accordionPinForm">';
+      domString += newPinForm.buildPinForm();
+      domString += '</div>';
+      domString += '</div>';
+      domString += '</div>';
+      domString += '</div>';
+
       domString += '<h3>Current pins:</h3>';
       domString += '<div class="container d-flex flex-wrap">';
       domString += '<div class="row row-cols-1 row-cols-md-3">';
