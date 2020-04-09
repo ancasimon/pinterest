@@ -2,7 +2,6 @@
   "board1": {
     "name": "What to Eat in Asheville, NC",
     "location": "Asheville, NC",
-    "description": "About Board One",
     "imageUrl": "https://tinyurl.com/whve23r",
     "alt": "Map of Asheville, NC",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -10,7 +9,6 @@
   "board2": {
     "name": "What to Eat in Maine",
     "location": "Maine",
-    "description": "About Board 2",
     "imageUrl": "https://tinyurl.com/sp33pmk",
     "alt": "Map of the state of ME",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -18,7 +16,6 @@
   "board3": {
     "name": "What to Eat in Seattle, WA",
     "location": "Seattle, WA",
-    "description": "About Board 3",
     "imageUrl": "https://tinyurl.com/sdg8kpg",
     "alt": "Map of Seattle, WA",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -26,7 +23,6 @@
   "board4": {
     "name": "What to Eat at Home",
     "location": "Home, sweet home",
-    "description": "About Board 4",
     "imageUrl": "https://tinyurl.com/rkuolhj",
     "alt": "Map of the state of TN",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -34,7 +30,6 @@
   "board5": {
     "name": "What to Eat in Southern France",
     "location": "Southern France",
-    "description": "About Board 5",
     "imageUrl": "https://tinyurl.com/sm7ox94",
     "alt": "Map of southern region of France",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -43,7 +38,6 @@
   "board6": {
     "name": "What to Eat in Israel",
     "location": "Israel",
-    "description": "About Board 6",
     "imageUrl": "https://tinyurl.com/sblmugu",
     "alt": "Map of Israel",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -51,7 +45,6 @@
   "board7": {
     "name": "What to Eat in the Canary Islands, Spain",
     "location": "the Canary Islands of Spain",
-    "description": "About Board 7",
     "imageUrl": "https://tinyurl.com/wlhtuwt",
     "alt": "Map of the Canary Islands, Spain",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -59,7 +52,6 @@
   "board8": {
     "name": "What to Eat in Romania",
     "location": "Romania",
-    "description": "About Board 8",
     "imageUrl": "https://tinyurl.com/qsqchc5",
     "alt": "Map of Romania",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -67,7 +59,6 @@
   "board9": {
     "name": "Where to Next? (No pins!)",
     "location": "TBD",
-    "description": "About Board 9",
     "imageUrl": "https://tinyurl.com/v9uo99e",
     "alt": "World map",
     "uid": "QECSuRxTfHWV6j833rD7CrcMHxs2"
@@ -75,7 +66,6 @@
   "board10": {
     "name": "Where User #2 has been!",
     "location": "your favorite place",
-    "description": "About Board 10",
     "imageUrl": "https://tinyurl.com/wx2xb6b",
     "alt": "World map",
     "uid": "12345"
