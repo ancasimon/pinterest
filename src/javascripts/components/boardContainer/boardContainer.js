@@ -29,6 +29,7 @@ const makeBoard = (e) => {
   e.preventDefault();
   const myUid = firebase.auth().currentUser.uid;
   const newBoard = {
+    alt: $('#board-location').val(),
     imageUrl: $('#board-imageUrl').val(),
     location: $('#board-location').val(),
     name: $('#board-name').val(),

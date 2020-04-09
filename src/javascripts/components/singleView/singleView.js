@@ -19,6 +19,26 @@ const removePin = (e) => {
     .catch((err) => console.error('could not delete pin', err));
 };
 
+const makePin = (e) => {
+  console.error('makePin function got triggered');
+  e.PreventDefault();
+  // const boardId = e.target.closest('.accordion').dataset.boardId;
+  // console.error('id of board we are in', boardId);
+  const newPin = {
+    alt: $('#pin-name').val(),
+    // boardId: e.target.closest('.accordion').dataset.boardId,
+    imageUrl: $('#pin-imageUrl').val(),
+    name: $('#pin-name').val(),
+  };
+  console.error('this is the newest pin', newPin);
+  pinData.addPin(newPin)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      viewSingleBoard();
+    })
+    .catch((err) => console.error('could not add a pin', err));
+};
+
 const viewSingleBoard = (boardId) => {
   smash.getSingleBoardWithPins(boardId)
     .then((singleBoard) => {
@@ -30,7 +50,7 @@ const viewSingleBoard = (boardId) => {
       domString += `<h2 class="text-white mb-3">${singleBoard.name}</h2>`;
 
       domString += '<div class="col-10 offset-1 text-center">';
-      domString += '<div class="accordion" id="accordionPinForm">';
+      domString += `<div class="accordion" id="accordionPinForm" data-boardId=${singleBoard.id}>`;
       domString += '<div class="card alert alert-secondary"">';
       domString += '<div class="card-header" id="headingPinForm">';
       domString += '<h2 class="mb-0">';
@@ -68,6 +88,7 @@ const viewSingleBoard = (boardId) => {
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
+      $('#button-create-pin').click(makePin);
       $('#boards').addClass('hide');
       $('#single-view').removeClass('hide');
     })
