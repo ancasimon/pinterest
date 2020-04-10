@@ -15,6 +15,7 @@ const removePin = (e) => {
   pinData.deletePin(pinId)
     .then(() => {
       $(e.target.closest('.pin-card')).addClass('hide, remove-from-dom');
+      // eslint-disable-next-line no-use-before-define
     })
     .catch((err) => console.error('could not delete pin', err));
 };
@@ -64,10 +65,10 @@ const viewSingleBoard = (boardId) => {
       domString += '</div>';
       domString += '</div>';
 
-      domString += '<h3>Current pins:</h3>';
-      domString += '<div class="container d-flex flex-wrap">';
-      domString += '<div class="row row-cols-1 row-cols-md-3">';
       if (singleBoard.pins.length) {
+        domString += '<h3>Current pins:</h3>';
+        domString += '<div class="container d-flex flex-wrap">';
+        domString += '<div class="row row-cols-1 row-cols-md-3">';
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
           domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}">`;
@@ -79,11 +80,11 @@ const viewSingleBoard = (boardId) => {
           domString += '</div>';
           domString += '</div>';
         });
+        domString += '</div>';
+        domString += '</div>';
       } else {
-        domString += '<p>No current pins here!</p>';
+        domString += '<h4>You don\'t have any pins in this board yet! Add one now!</h4>';
       }
-      domString += '</div>';
-      domString += '</div>';
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);

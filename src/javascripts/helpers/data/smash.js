@@ -5,14 +5,15 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
   boardData.getBoardById(boardId)
     .then((response) => {
       const board = response.data;
+      console.error('board response data', board);
       board.id = boardId;
       board.pins = [];
       pinData.getPinsByBoardId(board.id).then((pins) => {
         if (pins) {
           pins.forEach((pin) => {
             board.pins.push(pin);
-            resolve(board);
           });
+          resolve(board);
         }
       });
     })
