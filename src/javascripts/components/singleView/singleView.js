@@ -22,12 +22,12 @@ const removePin = (e) => {
 
 const makePin = (e) => {
   console.error('makePin function got triggered');
-  e.PreventDefault();
-  // const boardId = e.target.closest('.accordion').dataset.boardId;
-  // console.error('id of board we are in', boardId);
+  // e.PreventDefault();
+  const boardId = e.target.closest('.card').id;
+  console.error('id of board we are in', boardId);
   const newPin = {
     alt: $('#pin-name').val(),
-    // boardId: e.target.closest('.accordion').dataset.boardId,
+    boardId,
     imageUrl: $('#pin-imageUrl').val(),
     name: $('#pin-name').val(),
   };
@@ -51,8 +51,9 @@ const viewSingleBoard = (boardId) => {
       domString += `<h2 class="text-white mb-3">${singleBoard.name}</h2>`;
 
       domString += '<div class="col-10 offset-1 text-center">';
-      domString += `<div class="accordion" id="accordionPinForm" data-boardId=${singleBoard.id}>`;
-      domString += '<div class="card alert alert-secondary"">';
+      domString += '<div class="accordion" id="accordionPinForm">';
+      domString += `<div class="card alert alert-secondary" id="${singleBoard.id}">`;
+      console.log('board id on pin', `${singleBoard.id}`);
       domString += '<div class="card-header" id="headingPinForm">';
       domString += '<h2 class="mb-0">';
       domString += `<button class="btn btn-outline-secondary alert-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePinForm" aria-expanded="false" aria-controls="collapsePinForm">Click Here to Add a New Pin for ${singleBoard.location}</button>`;
@@ -86,6 +87,7 @@ const viewSingleBoard = (boardId) => {
         domString += '<h4>You don\'t have any pins in this board yet! Add one now!</h4>';
       }
       domString += '</div>';
+      console.log('single board and its pins', singleBoard.pins);
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);

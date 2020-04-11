@@ -5,7 +5,6 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
   boardData.getBoardById(boardId)
     .then((response) => {
       const board = response.data;
-      console.error('board response data', board);
       board.id = boardId;
       board.pins = [];
       pinData.getPinsByBoardId(board.id).then((pins) => {
@@ -14,6 +13,8 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
             board.pins.push(pin);
           });
           resolve(board);
+          console.error('board response data', board);
+          console.error('new pin added to array');
         }
       });
     })
