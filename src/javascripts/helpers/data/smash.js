@@ -13,7 +13,6 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
             board.pins.push(pin);
           });
           resolve(board);
-          console.error('board response data', board);
         }
       });
     })

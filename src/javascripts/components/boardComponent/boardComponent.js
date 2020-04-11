@@ -1,6 +1,6 @@
 const boardBuilder = (board) => {
   let domString = '';
-  domString += '<div class="col-3 mt-2 mb-2">';
+  domString += '<div class="col-md-3 mt-2 mb-2">';
   domString += `<div class="card board-card h-100" id="${board.id}">`;
   domString += `<h4 class="card-header">${board.name}</h4>`;
   domString += '<div class="card-body">';

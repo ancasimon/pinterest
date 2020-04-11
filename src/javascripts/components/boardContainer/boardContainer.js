@@ -35,7 +35,6 @@ const makeBoard = (e) => {
     name: $('#board-name').val(),
     uid: myUid,
   };
-  console.error('new board', newBoard);
   boardData.addBoard(newBoard)
     .then(() => {
       // eslint-disable-next-line no-use-before-define

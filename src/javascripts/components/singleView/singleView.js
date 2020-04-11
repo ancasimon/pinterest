@@ -13,10 +13,8 @@ const closeSingleViewEvent = () => {
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-card').id;
   const { boardId } = e.target.closest('.card').dataset;
-  console.log('board id on deleted pin', boardId);
   pinData.deletePin(pinId)
     .then(() => {
-      // $(e.target.closest('.pin-card')).addClass('hide, remove-from-dom');
       // eslint-disable-next-line no-use-before-define
       viewSingleBoard(boardId);
     })
@@ -24,17 +22,14 @@ const removePin = (e) => {
 };
 
 const makePin = (e) => {
-  console.error('makePin function got triggered');
   e.preventDefault();
   const boardId = e.target.closest('.card').id;
-  console.error('id of board we are in', boardId);
   const newPin = {
     alt: $('#pin-name').val(),
     boardId,
     imageUrl: $('#pin-imageUrl').val(),
     name: $('#pin-name').val(),
   };
-  console.error('this is the newest pin', newPin);
   pinData.addPin(newPin)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -56,7 +51,6 @@ const viewSingleBoard = (boardId) => {
       domString += '<div class="col-10 offset-1 text-center">';
       domString += '<div class="accordion" id="accordionPinForm">';
       domString += `<div class="card alert alert-secondary" id="${singleBoard.id}">`;
-      console.log('board id on pin', `${singleBoard.id}`);
       domString += '<div class="card-header" id="headingPinForm">';
       domString += '<h2 class="mb-0">';
       domString += `<button class="btn btn-outline-secondary alert-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePinForm" aria-expanded="false" aria-controls="collapsePinForm">Click Here to Add a New Pin for ${singleBoard.location}</button>`;
@@ -76,7 +70,6 @@ const viewSingleBoard = (boardId) => {
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
           domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}" data-board-id="${singleBoard.id}">`;
-          console.log('dataset on pin', `${singleBoard.id}`);
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
@@ -94,7 +87,6 @@ const viewSingleBoard = (boardId) => {
         domString += '<h4>You don\'t have any pins in this board! Add one now!</h4>';
       }
       domString += '</div>';
-      console.log('single board and its pins', singleBoard.pins);
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
@@ -110,8 +102,6 @@ const viewSingleBoardEvent = (e) => {
     return;
   }
   const boardId = e.target.closest('.card').id;
-  console.log('boardid as called by viewsingleboardevent', boardId);
-  // const { boardId } = e.target.closest('.card').dataset;
   viewSingleBoard(boardId);
 };
 
