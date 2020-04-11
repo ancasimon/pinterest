@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import smash from '../../helpers/data/smash';
 import pinData from '../../helpers/data/pinData';
 import newPinForm from '../newPinForm/newPinForm';
+import editPinForm from '../editPinForm/editPinForm';
 
 
 const closeSingleViewEvent = () => {
@@ -21,6 +22,13 @@ const removePin = (e) => {
     .catch((err) => console.error('could not delete pin', err));
 };
 
+const editPinEvent = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.card').id;
+  console.log('pinId accessed for editing', pinId);
+  editPinForm.buildEditPinForm(pinId);
+};
+
 const makePin = (e) => {
   e.preventDefault();
   const boardId = e.target.closest('.card').id;
@@ -36,6 +44,27 @@ const makePin = (e) => {
       viewSingleBoard(boardId);
     })
     .catch((err) => console.error('could not add a pin', err));
+};
+
+const modifyPin = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.edit-pin-form-tag').id;
+  console.log('pinid to be modified', pinId);
+  const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
+  console.log('boardid on pin to be modified', boardId);
+  const modifiedPin = {
+    // alt??
+    boardId: $('#edit-pin-boardId').val(),
+    // imageUrl: $('#edit-pin-imageUrl').val(), ????
+    name: $('#edit-pin-name').val(),
+  };
+  pinData.updatePin(pinId, modifiedPin)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      viewSingleBoard(boardId);
+      utils.printToDom('edit-pin-form', '');
+    })
+    .catch((error) => console.error('could not update selected pin', error));
 };
 
 const viewSingleBoard = (boardId) => {
@@ -69,7 +98,7 @@ const viewSingleBoard = (boardId) => {
         domString += '<div class="row row-cols-1 row-cols-md-3">';
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
-          domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}" data-board-id="${singleBoard.id}">`;
+          domString += `<div class="card pin-card bg-light mb-3 h-100" style="min-width: 18rem;" id="${item.id}" data-board-id="${singleBoard.id}">`;
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
@@ -89,8 +118,11 @@ const viewSingleBoard = (boardId) => {
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
+      $('body').on('click', '.edit-pin-button', editPinEvent);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#button-create-pin').click(makePin);
+      // $('#button-edit-pin').click(modifyPin);
+      $('body').on('click', '#button-submit-pin-edits', modifyPin);
       $('#boards').addClass('hide');
       $('#single-view').removeClass('hide');
     })
