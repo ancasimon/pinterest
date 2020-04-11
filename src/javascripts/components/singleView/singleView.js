@@ -12,11 +12,30 @@ const closeSingleViewEvent = () => {
 
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-card').id;
+  const { boardId } = e.target.closest('.card').dataset;
   pinData.deletePin(pinId)
     .then(() => {
-      $(e.target.closest('.pin-card')).addClass('hide, remove-from-dom');
+      // eslint-disable-next-line no-use-before-define
+      viewSingleBoard(boardId);
     })
     .catch((err) => console.error('could not delete pin', err));
+};
+
+const makePin = (e) => {
+  e.preventDefault();
+  const boardId = e.target.closest('.card').id;
+  const newPin = {
+    alt: $('#pin-name').val(),
+    boardId,
+    imageUrl: $('#pin-imageUrl').val(),
+    name: $('#pin-name').val(),
+  };
+  pinData.addPin(newPin)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      viewSingleBoard(boardId);
+    })
+    .catch((err) => console.error('could not add a pin', err));
 };
 
 const viewSingleBoard = (boardId) => {
@@ -24,14 +43,14 @@ const viewSingleBoard = (boardId) => {
     .then((singleBoard) => {
       let domString = '';
       domString += '<div class="container d-inline-block text-right mt-5">';
-      domString += '<button id="close-single-view" type="button" class="btn btn-dark"><i class="fas fa-window-close"></i></button>';
+      domString += '<button id="close-single-view" type="button" class="btn btn-dark btn-lg"><i class="fas fa-times"></i></button>';
       domString += '</div>';
       domString += '<div class="container">';
       domString += `<h2 class="text-white mb-3">${singleBoard.name}</h2>`;
 
       domString += '<div class="col-10 offset-1 text-center">';
       domString += '<div class="accordion" id="accordionPinForm">';
-      domString += '<div class="card alert alert-secondary"">';
+      domString += `<div class="card alert alert-secondary" id="${singleBoard.id}">`;
       domString += '<div class="card-header" id="headingPinForm">';
       domString += '<h2 class="mb-0">';
       domString += `<button class="btn btn-outline-secondary alert-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePinForm" aria-expanded="false" aria-controls="collapsePinForm">Click Here to Add a New Pin for ${singleBoard.location}</button>`;
@@ -44,30 +63,34 @@ const viewSingleBoard = (boardId) => {
       domString += '</div>';
       domString += '</div>';
 
-      domString += '<h3>Current pins:</h3>';
-      domString += '<div class="container d-flex flex-wrap">';
-      domString += '<div class="row row-cols-1 row-cols-md-3">';
       if (singleBoard.pins.length) {
+        domString += '<h3>Current pins:</h3>';
+        domString += '<div class="container d-flex flex-wrap">';
+        domString += '<div class="row row-cols-1 row-cols-md-3">';
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
-          domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}">`;
+          domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}" data-board-id="${singleBoard.id}">`;
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
           domString += '</div>';
-          domString += '<button class="btn btn-secondary delete-pin-button"><i class="fas fa-trash-alt"></i></button>';
+          domString += '<div class="row d-flex justify-content-around pb-2">';
+          domString += '<button class="btn btn-secondary delete-pin-button col-3"><i class="fas fa-trash-alt"></i></button>';
+          domString += '<button class="btn btn-secondary edit-pin-button col-3"><i class="fas fa-pencil-alt"></i></button>';
+          domString += '</div>';
           domString += '</div>';
           domString += '</div>';
         });
+        domString += '</div>';
+        domString += '</div>';
       } else {
-        domString += '<p>No current pins here!</p>';
+        domString += '<h4>You don\'t have any pins in this board! Add one now!</h4>';
       }
-      domString += '</div>';
-      domString += '</div>';
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
+      $('#button-create-pin').click(makePin);
       $('#boards').addClass('hide');
       $('#single-view').removeClass('hide');
     })
