@@ -14,7 +14,6 @@ const getSingleBoardWithPins = (boardId) => new Promise((resolve, reject) => {
           });
           resolve(board);
           console.error('board response data', board);
-          console.error('new pin added to array');
         }
       });
     })
