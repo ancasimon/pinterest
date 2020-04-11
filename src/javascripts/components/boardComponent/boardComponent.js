@@ -8,7 +8,9 @@ const boardBuilder = (board) => {
   domString += `<img class="board-image img-fluid" src="${board.imageUrl}" alt="${board.alt}"></img>`;
   domString += '</div>';
   domString += '</div>';
-  domString += '<button type="button" class="btn btn-outline-secondary delete-board-button"><i class="fas fa-trash-alt delete-board-button"></i></button>';
+  domString += '<div class="row d-flex justify-content-around pb-2">';
+  domString += '<button type="button" class="btn btn-outline-secondary delete-board-button col-3"><i class="fas fa-trash-alt delete-board-button"></i></button>';
+  domString += '</div>';
   domString += '</div>';
   domString += '</div>';
 
