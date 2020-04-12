@@ -40,21 +40,28 @@ const buildEditPinForm = (pinId) => {
       domString += '<label for="edit-pin-boardId" class="col-sm-4 col-form-label">Change the board this pin belongs to:</label>';
       domString += '<div class="col-sm-6 input-group">';
       const myUid = firebase.auth().currentUser.uid;
-      boardData.getBoardsByUid(myUid)
-        .then((boards) => {
-          domString += '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
-          domString += '<option selected>Choose...</option>';
-          boards.forEach((board) => {
-            domString += `<option value="${board.name}">${board.name}</option>`;
-          });
-          domString += '</select>';
-          domString += '<div class="input-group-append">';
-          domString += '<button class="btn btn-outline-secondary" type="button">Button</button>';
-          domString += '</div>';
-          domString += '</div>';
-          console.log('boards returned for the pin', boards);
-        })
-        .catch((err) => console.error('getBoardsByUid broke', err));
+      const boards = boardData.getBoardsByUid(myUid);
+      boards.forEach((board) => {
+        domString += '<div class="form-check">';
+        domString += `<input type="checkbox" class="form-check-input pin-board-checkbox" id=${pinId}>`;
+        domString += `<label class="form-check-label" for="exampleCheck1">${board.name}</label>`;
+        domString += '</div>';
+      });
+      // boardData.getBoardsByUid(myUid)
+      //   .then((boards) => {
+      //     domString += '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
+      //     domString += '<option selected>Choose...</option>';
+      //     boards.forEach((board) => {
+      //       domString += `<option value="${board.name}">${board.name}</option>`;
+      //     });
+      //     domString += '</select>';
+      //     domString += '<div class="input-group-append">';
+      //     domString += '<button class="btn btn-outline-secondary" type="button">Button</button>';
+      //     domString += '</div>';
+      //     domString += '</div>';
+      //     console.log('boards returned for the pin', boards);
+      //   })
+      //   .catch((err) => console.error('getBoardsByUid broke', err));
       domString += '</div>';
       domString += '</div>';
       domString += '</div>';
