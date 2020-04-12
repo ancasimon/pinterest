@@ -1,3 +1,7 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import boardData from '../../helpers/data/boardData';
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 
@@ -31,13 +35,37 @@ const buildEditPinForm = (pinId) => {
       domString += `<input type="text" class="form-control" id="edit-pin-boardId" placeholder="Pick a board for your pin" value="${pin.boardId}">`;
       domString += '</div>';
       domString += '</div>';
+
+      domString += '<div class="form-group row">';
+      domString += '<label for="edit-pin-boardId" class="col-sm-4 col-form-label">Change the board this pin belongs to:</label>';
+      domString += '<div class="col-sm-6 input-group">';
+      const myUid = firebase.auth().currentUser.uid;
+      boardData.getBoardsByUid(myUid)
+        .then((boards) => {
+          domString += '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
+          domString += '<option selected>Choose...</option>';
+          boards.forEach((board) => {
+            domString += `<option value="${board.name}">${board.name}</option>`;
+          });
+          domString += '</select>';
+          domString += '<div class="input-group-append">';
+          domString += '<button class="btn btn-outline-secondary" type="button">Button</button>';
+          domString += '</div>';
+          domString += '</div>';
+          console.log('boards returned for the pin', boards);
+        })
+        .catch((err) => console.error('getBoardsByUid broke', err));
+      domString += '</div>';
+      domString += '</div>';
+      domString += '</div>';
+
       domString += '<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary">Update My Pin</button>';
       domString += '</form>';
 
       utils.printToDom('edit-pin-form', domString);
       console.log('dataset attribute of board in on pin', `${pin.boardId}`);
-      console.log('pin id to edit', `${pinId}`);
-      console.log('alt of pin to edit', `${pin.alt}`);
+      // console.log('pin id to edit', `${pinId}`);
+      // console.log('alt of pin to edit', `${pin.alt}`);
     })
     .catch((error) => console.error('could not update the pin', error));
 };
