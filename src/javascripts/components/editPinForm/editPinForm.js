@@ -9,70 +9,37 @@ const buildEditPinForm = (pinId) => {
   pinData.getSinglePin(pinId)
     .then((response) => {
       const pin = response.data;
-      console.log('getsinglepin response data', pin);
+      const myUid = firebase.auth().currentUser.uid;
+      console.log('getsinglepin response data', pinId);
+      console.log('pin name', pin.name);
+      console.log('pin board', pin.boardId);
       let domString = '';
-      domString += `<form class="container bg-light pb-3 mb-5 rounded-lg col-10 offset-1 edit-pin-form-tag" id=${pinId} data-board-id="${pin.boardId}">`;
+      domString += `<div class="container bg-light pb-3 mb-5 rounded-lg col-10 offset-1 edit-pin-form-tag" id=${pinId}>`;
       domString += '<div class="container d-inline-block text-right mt-3">';
       domString += '<button id="close-edit-pin-form" type="button" class="btn btn-dark btn-lg"><i class="fas fa-times"></i></button>';
       domString += '</div>';
-      domString += `<h2>Edit your <span class="font-italic">${pin.name} </span>pin!</h2>`;
-      domString += '<div class="form-group row mt-3">';
-      domString += '<label for="edit-pin-imageUrl" class="col-sm-4 col-form-label">Here\'s the URL for your pin (read-only):</label>';
-      domString += '<div class="col-sm-6">';
-      // domString += `<input type="text" readonly class="form-control-plaintext" id="edit-pin-imageUrl" placeholder="You cannot change the URL for your pin picture." value=${pin.imageUrl} alt="${pin.alt}"><a href="${pin.imageUrl}" target="_blank">${pin.imageUrl}</a></input>`;
-      domString += `<input type="text" readonly class="form-control-plaintext" id="edit-pin-imageUrl" placeholder="You cannot change the URL for your pin picture." value=${pin.imageUrl} alt="${pin.alt}">`;
-      domString += '</div>';
-      domString += '</div>';
-      domString += '<div class="form-group row mt-3">';
-      domString += '<label for="edit-pin-name" class="col-sm-4 col-form-label">Change your pin\'s name:</label>';
-      domString += '<div class="col-sm-6">';
-      domString += `<input type="text" class="form-control" id="edit-pin-name" placeholder="Enter a name for your pin" value="${pin.name}">`;
-      domString += '</div>';
-      domString += '</div>';
-      domString += '<div class="form-group row">';
-      domString += '<label for="edit-pin-boardId" class="col-sm-4 col-form-label">Change the board this pin belongs to:</label>';
-      domString += '<div class="col-sm-6">';
-      domString += `<input type="text" class="form-control" id="edit-pin-boardId" placeholder="Pick a board for your pin" value="${pin.boardId}">`;
-      domString += '</div>';
-      domString += '</div>';
-
-      domString += '<div class="form-group row">';
-      domString += '<label for="edit-pin-boardId" class="col-sm-4 col-form-label">Change the board this pin belongs to:</label>';
-      domString += '<div class="col-sm-6 input-group">';
-      const myUid = firebase.auth().currentUser.uid;
-      const boards = boardData.getBoardsByUid(myUid);
-      boards.forEach((board) => {
-        domString += '<div class="form-check">';
-        domString += `<input type="checkbox" class="form-check-input pin-board-checkbox" id=${pinId}>`;
-        domString += `<label class="form-check-label" for="exampleCheck1">${board.name}</label>`;
-        domString += '</div>';
-      });
-      // boardData.getBoardsByUid(myUid)
-      //   .then((boards) => {
-      //     domString += '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
-      //     domString += '<option selected>Choose...</option>';
-      //     boards.forEach((board) => {
-      //       domString += `<option value="${board.name}">${board.name}</option>`;
-      //     });
-      //     domString += '</select>';
-      //     domString += '<div class="input-group-append">';
-      //     domString += '<button class="btn btn-outline-secondary" type="button">Button</button>';
-      //     domString += '</div>';
-      //     domString += '</div>';
-      //     console.log('boards returned for the pin', boards);
-      //   })
-      //   .catch((err) => console.error('getBoardsByUid broke', err));
-      domString += '</div>';
-      domString += '</div>';
-      domString += '</div>';
-
+      domString += `<h2>Change the board for your <span class="font-italic">${pin.name} </span>pin!</h2>`;
+      domString += '<div class="col-10">';
+      domString += '<form>';
+      boardData.getBoardsByUid(myUid)
+        .then((boards) => {
+          boards.forEach((board) => {
+            domString += '<div class="form-check">';
+            domString += `<input class="form-check-input board-radio-btn" type="radio" name="boardRadios" id="${board.id}" value="${board.name}">`;
+            domString += `<label class="form-check-label" for=${board.id}>${board.name}</label>`;
+            domString += '</div>';
+            console.log('boards returned for the pin', boards);
+            console.log('board id', board.id);
+          })
+            .catch((err) => console.error('getBoardsByUid broke', err));
+          domString += '</form>';
+          domString += '</div>';
+        });
       domString += '<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary">Update My Pin</button>';
-      domString += '</form>';
+      domString += '</div>';
 
       utils.printToDom('edit-pin-form', domString);
-      console.log('dataset attribute of board in on pin', `${pin.boardId}`);
-      // console.log('pin id to edit', `${pinId}`);
-      // console.log('alt of pin to edit', `${pin.alt}`);
+      $('#single-view').addClass('hide');
     })
     .catch((error) => console.error('could not update the pin', error));
 };

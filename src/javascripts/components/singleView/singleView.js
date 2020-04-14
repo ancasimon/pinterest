@@ -11,6 +11,11 @@ const closeSingleViewEvent = () => {
   $('#single-view').addClass('hide');
 };
 
+const closeEditPinFormEvent = () => {
+  utils.printToDom('edit-pin-form', '');
+  $('#single-view').removeClass('hide');
+};
+
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-card').id;
   const { boardId } = e.target.closest('.card').dataset;
@@ -49,20 +54,16 @@ const makePin = (e) => {
 const modifyPin = (e) => {
   e.preventDefault();
   const pinId = e.target.closest('.edit-pin-form-tag').id;
+  const selectedBoard = utils.getRadioVal();
   console.log('pinid to be modified', pinId);
-  const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
-  console.log('boardid on pin to be modified', boardId);
-  const modifiedPin = {
-    // alt??
-    boardId: $('#edit-pin-boardId').val(),
-    // imageUrl: $('#edit-pin-imageUrl').val(), ????
-    name: $('#edit-pin-name').val(),
-  };
-  pinData.updatePin(pinId, modifiedPin)
+  // const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
+  // console.log('boardid on pin to be modified', boardId);
+  pinData.updatePin(pinId, selectedBoard)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      viewSingleBoard(boardId);
+      viewSingleBoard(selectedBoard);
       utils.printToDom('edit-pin-form', '');
+      $('#single-view').removeClass('hide');
     })
     .catch((error) => console.error('could not update selected pin', error));
 };
@@ -119,6 +120,7 @@ const viewSingleBoard = (boardId) => {
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
       $('body').on('click', '.edit-pin-button', editPinEvent);
+      $('body').on('click', '#close-edit-pin-form', closeEditPinFormEvent);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#button-create-pin').click(makePin);
       // $('#button-edit-pin').click(modifyPin);

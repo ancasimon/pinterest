@@ -25,7 +25,9 @@ const addPin = (newPin) => axios.post(`${baseUrl}/pins.json`, newPin);
 
 const getSinglePin = (pinId) => axios.get(`${baseUrl}/pins/${pinId}.json`);
 
-const updatePin = (pinId, modifiedPin) => axios.put(`${baseUrl}/pins/${pinId}.json`, modifiedPin);
+// const updatePin = (pinId, modifiedPin) => axios.put(`${baseUrl}/pins/${pinId}.json`, modifiedPin);
+
+const updatePin = (pinId, newBoardAssignment) => axios.patch(`${baseUrl}/pins/${pinId}.json`, { boardId: newBoardAssignment });
 
 export default {
   getPinsByBoardId,
