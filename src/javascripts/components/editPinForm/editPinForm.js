@@ -18,7 +18,7 @@ const buildEditPinForm = (pinId) => {
       domString += '<div class="container d-inline-block text-right mt-3">';
       domString += '<button id="close-edit-pin-form" type="button" class="btn btn-dark btn-lg"><i class="fas fa-times"></i></button>';
       domString += '</div>';
-      domString += `<h2>Change the board for your <span class="font-italic">${pin.name} </span>pin!</h2>`;
+      domString += `<h5>Change the board for your <span class="font-italic">${pin.name} </span>pin!</h5>`;
       domString += '<div class="col-10">';
       domString += '<form>';
       boardData.getBoardsByUid(myUid)
