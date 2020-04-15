@@ -16,13 +16,13 @@ One of the topics I love to follow on social media is food-related news and reci
 ##### Boards Page
 ![Home Page](./images/home.png)
 
-###### Adding a New Board
+##### Adding a New Board
 ![Add Board](./images/add_board.png)
 
-###### Single Board Page (with Pins)
+##### Single Board Page (with Pins)
 ![Single View](./images/single_view_seattle.png)
 
-###### Adding a New Pin
+##### Adding a New Pin
 ![Add Pin](./images/add_pin.png)
 
 ## Features
