@@ -10,10 +10,10 @@ const boardRadioButtons = () => {
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
       let domString = '';
-      boards.forEach((board) => {
+      boards.forEach((board, index) => {
         domString += '<div class="form-check">';
-        domString += `<input class="form-check-input board-radio-btn" type="radio" name="boardRadios" id="${board.id}" value="${board.name}">`;
-        domString += `<label class="form-check-label" for=${board.id}>${board.name}</label>`;
+        domString += `<input class="form-check-input board-radio-btn" type="radio" name="boardRadios" id="board-choice-${index + 1}" value="${board.name}">`;
+        domString += `<label class="form-check-label" for="board-choice-${index + 1}">${board.name}</label>`;
         domString += '</div>';
       });
       console.log('boards returned for radio buttons', boards);
@@ -37,9 +37,10 @@ const buildEditPinForm = (pinId) => {
       domString += `<h5>Change the current board (<span class="font-italic">${pin.boardId}</span>) for your <span class="font-italic">${pin.name} </span>pin!</h5>`;
       domString += '<div class="col-10">';
       domString += '<form>';
-      domString += `${boardRadioButtons()}`;
+      domString += boardRadioButtons();
       domString += '</form>';
       domString += '<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary">Update My Pin</button>';
+      domString += '</div>';
       domString += '</div>';
       utils.printToDom('edit-pin-form', domString);
       $('#single-view').addClass('hide');
