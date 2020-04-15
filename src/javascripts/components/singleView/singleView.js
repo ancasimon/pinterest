@@ -51,10 +51,21 @@ const makePin = (e) => {
     .catch((err) => console.error('could not add a pin', err));
 };
 
+const selectedBoardRadio = () => {
+  let val;
+  Array.from($('.board-radio-btn')).forEach((item) => {
+    if (item.checked) {
+      val = item.id;
+    }
+  });
+  console.error('value of selecetd radio button', val);
+  return val;
+};
+
 const modifyPin = (e) => {
   e.preventDefault();
   const pinId = e.target.closest('.edit-pin-form-tag').id;
-  const selectedBoard = utils.getRadioVal();
+  const selectedBoard = selectedBoardRadio();
   console.log('pinid to be modified', pinId);
   // const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
   // console.log('boardid on pin to be modified', boardId);
