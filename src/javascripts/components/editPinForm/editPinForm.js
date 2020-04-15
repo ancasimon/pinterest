@@ -5,23 +5,6 @@ import boardData from '../../helpers/data/boardData';
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 
-const boardRadioButtons = () => {
-  const myUid = firebase.auth().currentUser.uid;
-  boardData.getBoardsByUid(myUid)
-    .then((boards) => {
-      let domString = '';
-      boards.forEach((board, index) => {
-        domString += '<div class="form-check">';
-        domString += `<input class="form-check-input board-radio-btn" type="radio" name="boardRadios" id="board-choice-${index + 1}" value="${board.name}">`;
-        domString += `<label class="form-check-label" for="board-choice-${index + 1}">${board.name}</label>`;
-        domString += '</div>';
-      });
-      console.log('boards returned for radio buttons', boards);
-      return domString;
-    })
-    .catch((error) => console.error('could not get boards for radio buttons', error));
-};
-
 const buildEditPinForm = (pinId) => {
   pinData.getSinglePin(pinId)
     .then((response) => {
@@ -34,11 +17,29 @@ const buildEditPinForm = (pinId) => {
       domString += '<div class="container d-inline-block text-right mt-3">';
       domString += '<button id="close-edit-pin-form" type="button" class="btn btn-dark btn-lg"><i class="fas fa-times"></i></button>';
       domString += '</div>';
-      domString += `<h5>Change the current board (<span class="font-italic">${pin.boardId}</span>) for your <span class="font-italic">${pin.name} </span>pin!</h5>`;
+      domString += `<h5>Change the current board for your <span class="font-italic">${pin.name} </span>pin!</h5>`;
       domString += '<div class="col-10">';
-      domString += '<form>';
-      domString += boardRadioButtons();
-      domString += '</form>';
+      domString += '<div id="radio-buttons-section" class="m-3">';
+
+      const myUid = firebase.auth().currentUser.uid;
+      boardData.getBoardsByUid(myUid)
+        .then((boards) => {
+          let radioButtonsDomString = '';
+          boards.sort((a, b) => b.date - a.date);
+          boards.forEach((board) => {
+            if (pin.boardId !== board.id) {
+              radioButtonsDomString += '<div class="form-check m-2">';
+              radioButtonsDomString += `<input class="form-check-input board-radio-btn" type="radio" name="boardRadios" id="${board.id}" value="${board.name}">`;
+              radioButtonsDomString += `<label class="form-check-label" for="${board.id}">${board.name}</label>`;
+              radioButtonsDomString += '</div>';
+            }
+          });
+          console.log('boards returned for radio buttons', boards);
+          utils.printToDom('radio-buttons-section', radioButtonsDomString);
+        })
+        .catch((error) => console.error('could not get boards for radio buttons', error));
+
+      domString += '</div>';
       domString += '<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary">Update My Pin</button>';
       domString += '</div>';
       domString += '</div>';
