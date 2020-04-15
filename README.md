@@ -25,7 +25,6 @@ One of the topics I love to follow on social media is food-related news and reci
 ###### Adding a New Pin
 ![Add Pin](./images/add_pin.png)
 
-
 ## Features
 1. Users are authenticated via Google login. 
 1. Users can have view multiple boards. 
