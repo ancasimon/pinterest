@@ -25,6 +25,9 @@ One of the topics I love to follow on social media is food-related news and reci
 ##### Adding a New Pin
 ![Add Pin](./images/add_pin.png)
 
+##### Changing the Board on a Pin
+![Change Pin Board](./images/change_pin_board.png)
+
 ## Features
 1. Users are authenticated via Google login. 
 1. Users can have view multiple boards. 
@@ -32,7 +35,7 @@ One of the topics I love to follow on social media is food-related news and reci
 1. Users can access an individual view for each board, which displays all the pins associated with that board. 
 1. Users can add new boards.
 1. Users can add new pins.
-1. Users can change the board on a pin. 
+1. Users can change the board on a pin (and, to prevent confusion, they can select only from a list of boards that excludes the pin's current board). Once they save their changes, the new board they selected gets automatically displayed as a means to confirm their changes. 
 1. Users can delete boards, which also deletes all the pins associated with the corresponding board. 
 1. Users can delete individual pins. 
 
