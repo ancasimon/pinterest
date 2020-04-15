@@ -2,12 +2,18 @@ import utils from '../../helpers/utils';
 import smash from '../../helpers/data/smash';
 import pinData from '../../helpers/data/pinData';
 import newPinForm from '../newPinForm/newPinForm';
+import editPinForm from '../editPinForm/editPinForm';
 
 
 const closeSingleViewEvent = () => {
   utils.printToDom('single-view', '');
   $('#boards').removeClass('hide');
   $('#single-view').addClass('hide');
+};
+
+const closeEditPinFormEvent = () => {
+  utils.printToDom('edit-pin-form', '');
+  $('#single-view').removeClass('hide');
 };
 
 const removePin = (e) => {
@@ -19,6 +25,13 @@ const removePin = (e) => {
       viewSingleBoard(boardId);
     })
     .catch((err) => console.error('could not delete pin', err));
+};
+
+const editPinEvent = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.card').id;
+  console.log('pinId accessed for editing', pinId);
+  editPinForm.buildEditPinForm(pinId);
 };
 
 const makePin = (e) => {
@@ -36,6 +49,34 @@ const makePin = (e) => {
       viewSingleBoard(boardId);
     })
     .catch((err) => console.error('could not add a pin', err));
+};
+
+const selectedBoardRadio = () => {
+  let val;
+  Array.from($('.board-radio-btn')).forEach((item) => {
+    if (item.checked) {
+      val = item.id;
+    }
+  });
+  console.error('value of selecetd radio button', val);
+  return val;
+};
+
+const modifyPin = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.edit-pin-form-tag').id;
+  const selectedBoard = selectedBoardRadio();
+  console.log('pinid to be modified', pinId);
+  // const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
+  // console.log('boardid on pin to be modified', boardId);
+  pinData.updatePin(pinId, selectedBoard)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      viewSingleBoard(selectedBoard);
+      utils.printToDom('edit-pin-form', '');
+      $('#single-view').removeClass('hide');
+    })
+    .catch((error) => console.error('could not update selected pin', error));
 };
 
 const viewSingleBoard = (boardId) => {
@@ -69,7 +110,7 @@ const viewSingleBoard = (boardId) => {
         domString += '<div class="row row-cols-1 row-cols-md-3">';
         singleBoard.pins.forEach((item) => {
           domString += '<div class="col mb-3">';
-          domString += `<div class="card pin-card bg-light mb-3 h-100" id="${item.id}" data-board-id="${singleBoard.id}">`;
+          domString += `<div class="card pin-card bg-light mb-3 h-100" style="min-width: 18rem;" id="${item.id}" data-board-id="${singleBoard.id}">`;
           domString += `<div class="card-header">${item.name}</div>`;
           domString += '<div class="card-body">';
           domString += `<img class="pin-image" src="${item.imageUrl}" alt="${item.name}"></img>`;
@@ -89,8 +130,12 @@ const viewSingleBoard = (boardId) => {
       domString += '</div>';
       utils.printToDom('single-view', domString);
       $('body').on('click', '.delete-pin-button', removePin);
+      $('body').on('click', '.edit-pin-button', editPinEvent);
+      $('body').on('click', '#close-edit-pin-form', closeEditPinFormEvent);
       document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
       $('#button-create-pin').click(makePin);
+      // $('#button-edit-pin').click(modifyPin);
+      $('body').on('click', '#button-submit-pin-edits', modifyPin);
       $('#boards').addClass('hide');
       $('#single-view').removeClass('hide');
     })

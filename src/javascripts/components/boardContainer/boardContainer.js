@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import moment from 'moment';
 import utils from '../../helpers/utils';
 import boardComponent from '../boardComponent/boardComponent';
 // eslint-disable-next-line import/no-cycle
@@ -7,6 +8,7 @@ import singleView from '../singleView/singleView';
 import smash from '../../helpers/data/smash';
 import boardData from '../../helpers/data/boardData';
 import newBoardForm from '../newBoardForm/newBoardForm';
+
 
 const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -34,6 +36,7 @@ const makeBoard = (e) => {
     location: $('#board-location').val(),
     name: $('#board-name').val(),
     uid: myUid,
+    date: moment().format('YYYY'),
   };
   boardData.addBoard(newBoard)
     .then(() => {
@@ -47,6 +50,8 @@ const buildBoards = () => {
   const myUid = firebase.auth().currentUser.uid;
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
+      const sortedBoards = boards.sort((a, b) => b.date - a.date);
+      console.log('boards sorted', sortedBoards);
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
       domString += '<div class="col-10 offset-1">';
@@ -64,7 +69,7 @@ const buildBoards = () => {
       domString += '</div>';
       domString += '</div>';
       domString += '<div class="d-flex flex-wrap">';
-      boards.forEach((board) => {
+      sortedBoards.forEach((board) => {
         domString += boardComponent.boardBuilder(board);
       });
       domString += '</div>';
