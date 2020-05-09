@@ -58,13 +58,16 @@ const selectedBoardRadio = () => {
       val = item.id;
     }
   });
-  console.error('value of selecetd radio button', val);
+  console.error('value of selected radio button', val);
   return val;
 };
 
 const modifyPin = (e) => {
   e.preventDefault();
   const pinId = e.target.closest('.edit-pin-form-tag').id;
+  const currentBoardId = e.target.data.id;
+  console.error('target info', e.target.id);
+  // console.error('current board id before editing', currentBoardId);
   const selectedBoard = selectedBoardRadio();
   console.log('pinid to be modified', pinId);
   // const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
@@ -72,7 +75,7 @@ const modifyPin = (e) => {
   pinData.updatePin(pinId, selectedBoard)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      viewSingleBoard(selectedBoard);
+      viewSingleBoard(currentBoardId);
       utils.printToDom('edit-pin-form', '');
       $('#single-view').removeClass('hide');
     })

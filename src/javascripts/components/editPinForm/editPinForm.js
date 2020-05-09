@@ -9,6 +9,7 @@ const buildEditPinForm = (pinId) => {
   pinData.getSinglePin(pinId)
     .then((response) => {
       const pin = response.data;
+      const currentBoardId = pin.boardId;
       console.log('getsinglepin response data', pinId);
       console.log('pin name', pin.name);
       console.log('pin board', pin.boardId);
@@ -40,7 +41,7 @@ const buildEditPinForm = (pinId) => {
         .catch((error) => console.error('could not get boards for radio buttons', error));
 
       domString += '</div>';
-      domString += '<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary">Update My Pin</button>';
+      domString += `<button id="button-submit-pin-edits" type="submit" class="btn btn-secondary" data-id=${currentBoardId}>Update My Pin</button>`;
       domString += '</div>';
       domString += '</div>';
       utils.printToDom('edit-pin-form', domString);
