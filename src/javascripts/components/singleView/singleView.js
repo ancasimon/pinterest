@@ -30,7 +30,6 @@ const removePin = (e) => {
 const editPinEvent = (e) => {
   e.preventDefault();
   const pinId = e.target.closest('.card').id;
-  console.log('pinId accessed for editing', pinId);
   editPinForm.buildEditPinForm(pinId);
 };
 
@@ -58,7 +57,6 @@ const selectedBoardRadio = () => {
       val = item.id;
     }
   });
-  console.error('value of selecetd radio button', val);
   return val;
 };
 
@@ -66,9 +64,6 @@ const modifyPin = (e) => {
   e.preventDefault();
   const pinId = e.target.closest('.edit-pin-form-tag').id;
   const selectedBoard = selectedBoardRadio();
-  console.log('pinid to be modified', pinId);
-  // const { boardId } = e.target.closest('.edit-pin-form-tag').dataset;
-  // console.log('boardid on pin to be modified', boardId);
   pinData.updatePin(pinId, selectedBoard)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
