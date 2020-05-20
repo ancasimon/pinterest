@@ -9,9 +9,6 @@ const buildEditPinForm = (pinId) => {
   pinData.getSinglePin(pinId)
     .then((response) => {
       const pin = response.data;
-      console.log('getsinglepin response data', pinId);
-      console.log('pin name', pin.name);
-      console.log('pin board', pin.boardId);
       let domString = '';
       domString += `<div class="container bg-light pb-3 mb-5 rounded-lg col-10 offset-1 edit-pin-form-tag" id=${pinId}>`;
       domString += '<div class="container d-inline-block text-right mt-3">';
@@ -34,7 +31,6 @@ const buildEditPinForm = (pinId) => {
               radioButtonsDomString += '</div>';
             }
           });
-          console.log('boards returned for radio buttons', boards);
           utils.printToDom('radio-buttons-section', radioButtonsDomString);
         })
         .catch((error) => console.error('could not get boards for radio buttons', error));

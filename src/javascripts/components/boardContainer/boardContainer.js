@@ -51,7 +51,6 @@ const buildBoards = () => {
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
       const sortedBoards = boards.sort((a, b) => b.date - a.date);
-      console.log('boards sorted', sortedBoards);
       let domString = '';
       domString += '<h1 class="text-center text-white m-2">Food for Thought</h1>';
       domString += '<div class="col-10 offset-1">';
