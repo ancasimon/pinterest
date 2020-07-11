@@ -1,5 +1,7 @@
 # Foodies Unite
 
+[Check it out here!](https://pinterest-4b62d.web.app/). 
+
 ## Description
 This project is an exploration into using a Firebase database for user authentication and data management. It is a site similar to a much simplified version of Pinterest, and it includes meal recommendations for various places around the US and the world. Project instructions can be found [here](https://github.com/nss-nightclass-projects/exercise-vault/blob/master/FIREBASE_pinterest.md).
 
@@ -42,7 +44,7 @@ One of the topics I love to follow on social media is food-related news and reci
 1. Users can delete individual pins. 
 
 ## Technologies & Tools
-Axios API, Bootstrap, CSS, ES6 Modules, ESLint, Firebase (for authentication, data management, & deployment), Github (for version control & project planning), HTML5, JavaScript, jQuery, JSON, JSONLint, Lucidcharts (for entity relationship diagram (ERD) mapping) moment.js, Moqups, SASS, Webpack
+Axios, Bootstrap, CSS, ES6 Modules, ESLint, Firebase (for authentication, data management, & deployment), Github (for version control & project planning), HTML5, JavaScript, jQuery, JSON, JSONLint, Lucidchart (for entity relationship diagram (ERD) mapping) moment.js, moqups, REST API, Sass, Webpack
 
 ## How to Run
 1. Clone down this repo.
