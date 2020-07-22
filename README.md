@@ -43,7 +43,7 @@ One of the topics I love to follow on social media is food-related news and reci
 1. Users can delete boards, which also deletes all the pins associated with the corresponding board. 
 1. Users can delete individual pins. 
 
-## Technologies & Tools
+## Tools & Technologies
 Axios, Bootstrap, CSS, ES6 Modules, ESLint, Firebase (for authentication, data management, & deployment), Github (for version control & project planning), HTML5, JavaScript, jQuery, JSON, JSONLint, Lucidchart (for entity relationship diagram (ERD) mapping) moment.js, moqups, REST API, Sass, Webpack
 
 ## How to Run
